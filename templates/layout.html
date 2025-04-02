@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meine Flask-Website</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+        }
+
+        .header .static-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+
+        .content-container {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        .sidebar {
+            width: 100px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            transition: width 0.3s ease, opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .sidebar.collapsed {
+            width: 30px;
+            opacity: 1;
+            overflow: hidden;
+        }
+
+        .sidebar.collapsed ul {
+            opacity: 0;
+        }
+
+        .sidebar button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
+            margin-top: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            white-space: nowrap; /* Verhindert Zeilenumbruch */
+        }
+
+        .sidebar li a:hover {
+            background-color: #555;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="static-icon">★</div>
+        <h1>Meine Flask-Website</h1>
+    </header>
+
+    <div class="content-container">
+        <aside class="sidebar" id="sidebar">
+            <button onclick="toggleSidebar()">☰</button>
+            <ul>
+                <li><a href="{{ url_for('seite1') }}">Seite 1</a></li>
+                <li><a href="{{ url_for('seite2') }}">Seite 2</a></li>
+            </ul>
+        </aside>
+
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('collapsed');
+        }
+    </script>
+
+</body>
+</html>
