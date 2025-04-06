@@ -6,5 +6,5 @@ python app.py
 
 # Show & kill running processes
 ps aux | grep python
-kill [1234]
+kill 1234
 
