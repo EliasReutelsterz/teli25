@@ -1,2 +1,3 @@
 telivenv
 __pycache__/*
+.venv/
