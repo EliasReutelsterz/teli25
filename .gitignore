@@ -5,3 +5,4 @@ backend/spacenetathome/data/*
 backend/strava_api/client_secrets.txt
 backend/strava_api/token.json
 backend/road_detection_kaggle/data/*
+backend/road_detection_dataset_creation/api_key.txt
